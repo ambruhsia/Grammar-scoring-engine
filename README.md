@@ -77,8 +77,7 @@ experiments.csv   the run ledger: every experiment's description, CV per seed an
 ## How this was built
 
 Amrita built the original model in a Kaggle notebook (versions 1–18), set the research directions and constraints, and
-proposed many of the ideas tested afterwards ([docs/IDEAS.md](docs/IDEAS.md) lists them). The experiment loop that
-followed was run with **Claude Code**, an AI coding agent, inside fixed guard rails:
+proposed many of the ideas tested afterwards ([docs/IDEAS.md](docs/IDEAS.md) lists them). 
 - one change per experiment, kept only if a fixed CV rule accepts it;
 - every result logged;
 - GPU jobs and submissions only with her approval.
