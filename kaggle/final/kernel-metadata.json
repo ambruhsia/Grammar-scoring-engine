@@ -1,0 +1,21 @@
+{
+  "id": "amritarajput54/shl-grammar-scoring-final",
+  "title": "SHL grammar scoring - final",
+  "code_file": "final_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "amritarajput54/shl-grammar-final-artefacts",
+    "amritarajput54/shl-grammar-caches-v18"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "shl-hiring-assessment-2026"
+  ],
+  "model_sources": []
+}

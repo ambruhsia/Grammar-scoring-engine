@@ -1,0 +1,17 @@
+batch,descriptor,test,n_a,n_b,p,effect_r,pass
+short,L3 vs L4 errors,chk_error_mean,55,47,0.844642183887828,-0.11644100580270789,False
+short,L2 basic mistakes,chk_basic_error_mean,62,112,0.11347219652253654,0.1108870967741935,False
+short,L2 incomplete sentences,chk_incomplete_mean,62,112,0.2799725864226845,0.0535714285714286,False
+short,L5 complex structures,chk_complex_ok_mean,10,43,0.15585870902435794,0.20930232558139528,False
+short,L1-2 memorised patterns,chk_formulaic_mean,62,112,0.013858176637061074,0.2019009216589862,True
+short,L4-5 self-correction,chk_selfcorrect_mean,57,103,0.34623758714126446,0.03798330778402326,False
+short,overall level (CTC text),rub_ctc_ev,57,103,0.016483407274556765,0.20405382388008864,True
+short,overall level (Whisper text),rub_whisper_ev,57,103,0.02717433344192121,0.18412536194856077,True
+long,L3 vs L4 errors,chk_error_mean,183,129,0.8141620484658267,-0.059346803914093305,False
+long,L2 basic mistakes,chk_basic_error_mean,123,435,0.9999864952193842,-0.24767778712269883,False
+long,L2 incomplete sentences,chk_incomplete_mean,123,435,0.9999999927405471,-0.3344173441734417,False
+long,L5 complex structures,chk_complex_ok_mean,123,81,0.7497967525147698,-0.05570611261668168,False
+long,L1-2 memorised patterns,chk_formulaic_mean,123,435,0.94968517299729,-0.09686945145313519,False
+long,L4-5 self-correction,chk_selfcorrect_mean,252,256,3.178601396038825e-13,0.3688771081349207,True
+long,overall level (CTC text),rub_ctc_ev,252,256,4.607741665235591e-08,0.27394903273809534,True
+long,overall level (Whisper text),rub_whisper_ev,252,256,0.0002544762715759551,0.17827690972222232,True

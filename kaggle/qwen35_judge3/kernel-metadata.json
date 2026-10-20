@@ -1,0 +1,22 @@
+{
+  "id": "amritarajput54/shl-qwen35-judge3",
+  "title": "shl-qwen35-judge3",
+  "code_file": "qwen35_judge3.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "amritarajput54/shl-grammar-caches-v18"
+  ],
+  "kernel_sources": [
+    "amritarajput54/shl-verbatim-text"
+  ],
+  "competition_sources": [
+    "shl-hiring-assessment-2026"
+  ],
+  "model_sources": []
+}

@@ -1,0 +1,21 @@
+batch,descriptor,test,rubric,n_a,n_b,p,effect_r,pass,detail
+short,L2 incomplete sentences,fragment_ratio,might leave sentences incomplete,62,112.0,0.10291927162897002,0.044642857142857206,False,
+short,L2 incomplete sentences,no_punct,might leave sentences incomplete,62,112.0,0.0037876914935018177,0.13824884792626735,True,
+short,L1-2 memorized / simple,trigram_repeat_rate,"memorized patterns, simple structures",62,112.0,1.6354382871421344e-06,0.4186347926267282,True,
+short,L1-2 memorized / simple,mattr50,"memorized patterns, simple structures (lower range at <=2.5)",112,62.0,2.277883748175596e-05,0.37384792626728114,True,
+short,L3 vs L4 error density,lt_grammar_per100,errors (3) vs occasional minor errors (4),55,47.0,0.43241200869186525,0.018955512572533806,False,
+short,L3 vs L4 error density,llm_err_per100,errors (3) vs occasional minor errors (4),55,47.0,0.007613578515582843,0.28007736943907147,True,
+short,L5 complex structures,dep_clause_ratio,"complex grammar, complex language structures",10,43.0,0.7153082782880266,-0.11395348837209307,False,
+short,L5 complex structures,clauses_per_sentence,"complex grammar, complex language structures",10,43.0,0.9065669090611965,-0.2674418604651163,False,
+short,L4-5 self-correction,corrected_error_ratio,can correct most of them / correct themselves,57,103.0,0.21890142910199872,0.07341168455118385,False,
+short,Model monotone in level,mean OOF prediction by level,higher level -> higher predicted score,174,,,,True,means 2.52 2.64 3.01 3.36 3.73 4.03 4.29
+long,L2 incomplete sentences,fragment_ratio,might leave sentences incomplete,123,435.0,0.9887320189291937,-0.0759742080179423,False,
+long,L2 incomplete sentences,no_punct,might leave sentences incomplete,123,435.0,0.12431391211886067,0.03212783851976453,False,
+long,L1-2 memorized / simple,trigram_repeat_rate,"memorized patterns, simple structures",123,435.0,0.005114683137807098,0.15050929819643022,True,
+long,L1-2 memorized / simple,mattr50,"memorized patterns, simple structures (lower range at <=2.5)",435,123.0,6.128291867255564e-11,0.37983366040556965,True,
+long,L3 vs L4 error density,lt_grammar_per100,errors (3) vs occasional minor errors (4),183,129.0,0.0030486972040624054,0.1782098530097005,True,
+long,L3 vs L4 error density,llm_err_per100,errors (3) vs occasional minor errors (4),183,129.0,5.836206769450252e-13,0.4726564154699877,True,
+long,L5 complex structures,dep_clause_ratio,"complex grammar, complex language structures",123,81.0,0.2535861316487865,0.05500351299809303,False,
+long,L5 complex structures,clauses_per_sentence,"complex grammar, complex language structures",123,81.0,0.060637624578741015,0.12837498745357823,False,
+long,L4-5 self-correction,corrected_error_ratio,can correct most of them / correct themselves,252,256.0,0.06054544922167587,0.07724144345238093,False,
+long,Model monotone in level,mean OOF prediction by level,higher level -> higher predicted score,558,,,,True,means 2.58 2.79 3.07 3.36 3.83 4.44 4.72

@@ -1,0 +1,18 @@
+# environment
+.venv/
+__pycache__/
+.claude/settings.local.json
+
+# competition data and everything derived from it: never committed
+*.wav
+cache/
+runs/
+data/
+kaggle/final/artefacts/
+kaggle/main/*.log
+
+# local settings (copy config.env.example)
+config.env
+
+# pykan scratch files
+copy_temp_*

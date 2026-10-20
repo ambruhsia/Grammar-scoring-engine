@@ -1,0 +1,5 @@
+group4,n,true_label,main_model,batch_blind,main_minus_blind
+test-long,69,,3.736,3.662,0.074
+test-short,147,,3.045,3.406,-0.361
+train-long,558,3.587,3.601,3.453,0.148
+train-short,174,3.141,3.155,3.563,-0.408

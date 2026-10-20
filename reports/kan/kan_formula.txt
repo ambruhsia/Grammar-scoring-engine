@@ -1,0 +1,2 @@
+grade = -0.0276*artic_rate + 0.324*examiner - 0.0442*lm_gap + 0.409*n_words - 0.292*repair - 0.0182*repetition - 0.106*sent_len + 0.294*ttr + 3.47
+(inputs as z-scores over the 732 training clips, clipped to +-3)

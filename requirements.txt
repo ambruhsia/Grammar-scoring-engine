@@ -1,0 +1,17 @@
+kaggle
+numpy
+pandas
+scipy
+scikit-learn
+lightgbm
+xgboost
+catboost
+num2words
+spacy
+language_tool_python
+matplotlib
+# needed by some src modules (Rank-N-Contrast, attention pooling, KAN), CPU builds are enough:
+# torch
+# transformers
+# only for the KAN experiments (src/kan_*.py):
+# pykan==0.2.8

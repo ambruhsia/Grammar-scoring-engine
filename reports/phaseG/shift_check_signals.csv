@@ -1,0 +1,7 @@
+,signal_means,signal_means,signal_means,signal_means,smd,smd
+,test-long,test-short,train-long,train-short,test-short vs train-short,test-short vs train-long
+llm_rubric_expected,3.08,3.017,3.009,3.037,0.042,0.017
+llm_err_per100,31.248,34.105,35.701,30.541,0.209,0.093
+mattr50,0.741,0.71,0.721,0.717,0.102,0.156
+cola_frac_bad,0.388,0.478,0.431,0.387,0.266,0.136
+mean |SMD|,,,,,0.155,0.101

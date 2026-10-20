@@ -1,0 +1,18 @@
+{
+  "id": "amritarajput54/shl-laya-ft-pair",
+  "title": "shl-laya-ft-pair",
+  "code_file": "laya_ft_pair.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [
+    "amritarajput54/shl-grammar-final-artefacts"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": []
+}

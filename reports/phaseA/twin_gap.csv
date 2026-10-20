@@ -1,0 +1,19 @@
+column,kind,random,grouped,grouped_testmix,note,gap
+mlp,family,0.5880486862000961,0.6021206584585647,0.6574046118167247,local fit; uses *_pred as features,0.014071972258468568
+et,family,0.4760931573479907,0.4804994446911767,0.5171840432352068,local fit; uses *_pred as features,0.004406287343186044
+xgb,family,0.4833594075198124,0.4872542817126976,0.5255461860173856,local fit; uses *_pred as features,0.0038948741928852004
+rf,family,0.4824015727661864,0.4859615666008962,0.5250908124617742,local fit; uses *_pred as features,0.003559993834709785
+lgbm,family,0.4928708570126545,0.4963910454328945,0.5328980565505642,local fit; uses *_pred as features,0.003520188420239989
+knn,family,0.5230675721509144,0.5265539816607828,0.5488303132201585,local fit; uses *_pred as features,0.003486409509868449
+ridge,family,0.4863833932742099,0.4892250582391519,0.5295446218315301,local fit; uses *_pred as features,0.0028416649649420367
+krr,family,0.8781039849544595,0.8796859349121802,0.9258992286220356,local fit; uses *_pred as features,0.001581949957720652
+svr,family,0.5216608861759647,0.5190907550509878,0.5549394683447502,local fit; uses *_pred as features,-0.0025701311249769487
+ft_wavlm_pred,fixed,0.5553898329676932,,,cannot rebuild locally (GPU (fine-tune)); grouped OOF unknown,
+deberta_pred,fixed,0.6378987619616915,,,cannot rebuild locally (GPU); grouped OOF unknown,
+deberta_ctc_pred,fixed,0.643502111017859,,,cannot rebuild locally (GPU); grouped OOF unknown,
+deberta_pair_pred,fixed,0.5849241892874203,,,cannot rebuild locally (GPU); grouped OOF unknown,
+emb_pred,fixed,0.7700431207864498,,,cannot rebuild locally (embeddings not cached); grouped OOF unknown,
+spk_knn_pred,rebuilt,0.7181597812093772,0.7920887849069641,0.8202275005884002,reproduces cached column: max|diff| 8.4e-02,0.07392900369758693
+whisper_med_pred,rebuilt,0.528806932137191,0.5709863728165749,0.5867406603024858,reproduces cached column: max|diff| 8.3e-07,0.04217944067938395
+wavlm_large_pred,rebuilt,0.5337332306189785,0.5744262146867496,0.6135011125716531,reproduces cached column: max|diff| 5.6e-07,0.04069298406777111
+wavlm_pred,rebuilt,0.5625793804885049,0.5953346097876537,0.6390039378297551,reproduces cached column: max|diff| 6.4e-07,0.03275522929914887

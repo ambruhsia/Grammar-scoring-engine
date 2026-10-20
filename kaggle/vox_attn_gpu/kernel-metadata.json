@@ -1,0 +1,18 @@
+{
+  "id": "amritarajput54/shl-vox-attn-gpu",
+  "title": "shl-vox-attn-gpu",
+  "code_file": "vox_attn_gpu.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [
+    "amritarajput54/shl-voxtral-frames"
+  ],
+  "competition_sources": [],
+  "model_sources": []
+}

@@ -1,0 +1,12 @@
+# final notebook (CPU, default path); Python 3.12.9; versions it was verified with
+numpy==2.5.4
+pandas==3.0.6
+scipy==1.18.1
+scikit-learn==1.9.1
+lightgbm==4.7.0
+xgboost==3.4.1
+matplotlib==3.11.2
+spacy==3.8.16
+# spaCy model: bundled in the artefacts as spacy_en_core_web_sm-3.8.0.zip (en_core_web_sm 3.8.0, MIT)
+# appendix A only (RECOMPUTE_GPU = True, GPU session with internet):
+# torch, torchaudio, transformers, faster-whisper, librosa, soundfile, sentencepiece, bitsandbytes

@@ -1,0 +1,18 @@
+{
+  "id": "amritarajput54/shl-voxtral-features",
+  "title": "shl-voxtral-features",
+  "code_file": "voxtral_features.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [
+    "shl-hiring-assessment-2026"
+  ],
+  "model_sources": []
+}
