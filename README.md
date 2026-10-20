@@ -3,7 +3,7 @@
 **Predicting a human grammar rating (1–5, half-point steps) from a 45–60 second recording of spoken English.**
 Built for the Kaggle competition *SHL Hiring Assessment 2026* by **Amrita (Kaggle: ambruhsia)**.
 
-This repository leads with Amrita's own ideas. The scoring system around them combines techniques adopted from other
+This repository leads with all my ideas and approaches that i came up during this compedition. The scoring system around them combines techniques adopted from other
 participants' public write-ups (credited where they appear) with methods developed in the project's experiment loop.
 
 | | out-of-fold RMSE (speaker-grouped, weighted to the test's mix) | public leaderboard |
@@ -22,7 +22,7 @@ and the public 0.3279 sits inside it.
 > short recordings (68% of test, 24% of train) count as much as they will on test. It's pessimistic on purpose. Adding a
 > clip-level leak made the old random-fold CV look 0.02 better while the leaderboard got worse.
 
-## Amrita's ideas
+## Ideas
 
 Full detail, with every number: [docs/IDEAS.md](docs/IDEAS.md).
 
@@ -87,7 +87,7 @@ That scheme exposed a column that had memorised voices. Removing it made CV 0.02
 
 | document | what's in it |
 |---|---|
-| [docs/IDEAS.md](docs/IDEAS.md) | **Amrita's ideas**, one by one; then the credited sources of everything else |
+| [docs/IDEAS.md](docs/IDEAS.md) | **my ideas**, one by one; then the credited sources of everything else |
 | [docs/APPROACH.md](docs/APPROACH.md) | The final system and the approaches that are unusual for this task |
 | [docs/VALIDATION.md](docs/VALIDATION.md) | How results were measured and decided, and why the leaderboard wasn't the yardstick |
 | [docs/WHAT_FAILED.md](docs/WHAT_FAILED.md) | About 60 things that didn't work, with numbers and the lesson from each |
@@ -110,7 +110,7 @@ experiments.csv   the run ledger: every experiment's description, CV per seed an
 
 ## How this was built
 
-Amrita built the original model in a Kaggle notebook (versions 1–18), set the research directions and constraints,
+I built the original model in a Kaggle notebook (versions 1–18), set the research directions and constraints,
 proposed the ideas in [docs/IDEAS.md](docs/IDEAS.md), and made the calls on what to keep and submit. The experiments
 followed fixed guard rails:
 - one change per experiment, kept only if a fixed CV rule accepts it;
