@@ -6,7 +6,8 @@ There are 769 training and 216 test recordings, each 45–60 s of spoken English
 clips labelled 0 are static noise, a sentinel; no test clip resembles them (spectral flatness check). They're dropped,
 leaving **732 labelled clips**. Almost every grade is between 2.0 and 5.0; only four clips are below 2.0.
 
-Three properties of the data decide most of what follows:
+Three properties of the data decide most of what follows. The first two were reported in other participants' public
+write-ups; the third came out of this project's error analysis.
 
 1. **Speaker twins.** Clustering voice embeddings (x-vectors) finds 503 speakers. **53% of training clips share a speaker
    with another training clip**, usually with adjacent file ids. Twins' grades differ by 0.24 on average, against 1.16 for
@@ -74,23 +75,40 @@ On CV the hybrid and the combination tie. On the public board the hybrid wins by
 seeds had shown the combination's gain sits entirely on long clips, which is why short clips average both pipelines. The
 public-board result confirmed it after the fact.
 
-## What's unusual, and the evidence for it
+## What's unusual, and where it came from
 
-### 1. Two recognisers, one grammar signal
-Amrita's founding design: see [IDEAS.md](IDEAS.md#1-transcribe-twice-read-grammar-from-the-gap). The Whisper-versus-CTC gap
-measures how much grammar Whisper repaired. Every text model since reads the *pair*, so it can tell a speaker's error
-from a misrecognition.
+Each item is labelled by origin:
+- **Amrita**: her idea ([IDEAS.md](IDEAS.md));
+- **adopted**: from other participants' public write-ups, credited by name where known;
+- **developed**: built in the project's experiment loop.
 
-### 2. Validation that mirrors the test set
+### 1. A model that explains itself (Amrita)
+An additive Kolmogorov–Arnold network on eight understandable signals shows each signal's effect as a curve
+([reports/kan](../reports/kan)):
+- **Accuracy:** the curves cost 0.20 against the full stack, so the stack's accuracy comes from learned representations,
+  not these signals.
+- **Shape:** the curves show the examiner's floor, the repair-rate penalty, and a large "amount said" effect that is
+  partly recording length.
+- **The finding:** one additive KAN on the *stack's* inputs (the members' predictions included) matches the 24-member blend
+  on familiar prompts. It does worse on unseen prompts.
+
+### 2. Rubric questions a decision model can answer (Amrita)
+Laya, a rubric-conditioned decision model, answers eight yes/no questions about every sentence. The questions that compare
+the raw and clean transcripts ("same meaning?", "grammar-only change?") pass the rubric checks and are in the final base
+pipeline: CV 0.0024 better, held on fresh fold seeds. Questions about a specific rubric level mostly fail or flip sign.
+
+### 3. Validation that mirrors the test set (developed, on problems other participants reported)
 - Speaker-grouped folds, test-mix weighting, an unseen-prompt check, fresh fold seeds;
-- decisions made with pre-set rules and a paired speaker-group bootstrap.
+- decisions made with pre-set rules and a paired speaker-group bootstrap. The bootstrap and the sanity checks came from
+  an external review Amrita passed on.
 
 The scheme found a member that had been memorising voices. It also showed that most of the gains measured on random folds
 were partly leakage. Full detail in [VALIDATION.md](VALIDATION.md).
 
-### 3. An LLM examiner as a residual corrector, not a member
-- **The examiner.** A zero-shot Qwen3.5-9B (4-bit, one forward pass per question, no generation) answers rubric questions
-  about three transcripts. The probability-weighted answer correlates up to +0.73 with the human grade.
+### 4. An LLM examiner as a residual corrector, not a member (judge adopted, its use developed)
+- **The examiner.** A zero-shot Qwen3.5-9B scoring transcripts against the rubric is the #1 public write-up's idea
+  (AMITABHSHUKLA). Here it answers rubric and accuracy questions about three transcripts (4-bit, one forward pass per
+  question, no generation). The probability-weighted answer correlates up to +0.73 with the human grade.
 - **As a blend member it fails.** The blend's weights must be non-negative, and the examiner is collinear with the members
   (CV 0.5097 against 0.5088).
 - **As a residual stage it works.** It only has to explain what the stack gets wrong: given the stack's prediction, its
@@ -101,59 +119,57 @@ were partly leakage. Full detail in [VALIDATION.md](VALIDATION.md).
   (0.4994) and a *worse* public score (0.3311). With 86 training clips, the slope learned those clips' prompts, not their
   recordings. The examiner's *grade* generalises; a batch-specific *slope* doesn't.
 
-### 4. Per-recording-batch stacking
+### 5. Per-recording-batch stacking (developed)
 - Text members carry the short batch; audio members and trees carry the long one. One shared blend can't serve both.
 - Splitting the blend by batch was the largest single CV gain of the stacking work (0.5139 → 0.4992).
-- A third group for the 45.06 s batch, as one public write-up used, added nothing here.
+- A third group for the 45.06 s batch, as one public write-up (PRINCE2-AI) used, added nothing here.
 
-### 5. Two pipelines, averaged where they disagree
+### 6. Two pipelines, averaged where they disagree (developed)
 - **The finding.** On fresh fold seeds, the combination's gain over the base was entirely on long clips. Its apparent
   short-clip gain on the main seeds was fold luck.
 - **The fix.** Averaging the two pipelines on short clips was robust on both fold-seed sets.
 - **Public score:** 0.3344 (base) → 0.3309 (first hybrid) → 0.3279 (with the shrunk blend and bagging).
 - Averaging the *pipelines* beat both alone (0.3334 and 0.3338).
 
-### 6. Speakers used three ways
+### 7. Speakers used three ways (pooling adopted, the rest developed)
 The same x-vector clusters serve three jobs:
 - **Fold groups**, so twins never straddle a split.
-- **Label denoising:** members learn from a mix of the clip's grade and its speaker's mean grade. It's safe because
-  groups never straddle a split.
-- **Test-time pooling:** a clip's prediction is pulled toward its same-voice neighbours.
+- **Label denoising:** members learn from a mix of the clip's grade and its speaker's mean grade. It's safe because groups
+  never straddle a split.
+- **Test-time pooling:** a clip's prediction is pulled toward its same-voice neighbours, an idea from nakulgrover118's and
+  Anurag Nayak's write-ups.
 
-### 7. Rank-N-Contrast: a grade-ordered embedding that ignores speaker and topic
+### 8. Rank-N-Contrast: a grade-ordered embedding that ignores speaker and topic (developed)
 - A small network maps the text and audio embeddings to a space where distance follows the grade.
 - Its positive pairs are chosen from a *different speaker and a different topic*, so it can't cluster by voice or prompt.
 - When introduced it was the strongest learned member (0.541). It's in the combination pipeline.
 
-### 8. Asking the audio LLM the question first
-- Voxtral reads the audio and a grammar question. Putting the question *before* the audio gives better hidden states for
-  grading.
+### 9. Asking the audio LLM the question first (model adopted, views developed)
+- Voxtral-Mini-3B states were the strongest single view in the top public write-ups.
+- Here it reads the audio together with a grammar question, and putting the question *before* the audio gives better
+  hidden states for grading.
 - Averaging three views (question after; question before, in two wordings) gave the best single member: 0.5315.
 
-### 9. Reading the public board without fitting to it
-Following other teams' public write-ups, the board metric was decoded as 0.6 × RMSE + 0.4 × (1 − Pearson). Two
-shift probes (a submission shifted by −0.25 and by −0.50) then gave:
+### 10. Two recognisers, one grammar signal (adopted)
+- **The source:** adopted into the original notebook from other participants' public write-ups.
+- **The idea:** the Whisper-versus-CTC gap measures how much grammar Whisper repaired. The repair rate is the strongest
+  handcrafted feature (Spearman −0.55).
+- **How it's used here:** every text model reads the *pair*, so it can tell a speaker's error from a misrecognition.
+
+### 11. Reading the public board without fitting to it (adopted)
+Following Techy-A's public write-up, the board metric was decoded as 0.6 × RMSE + 0.4 × (1 − Pearson). Two shift probes (a
+submission shifted by −0.25 and by −0.50) then gave:
 - public RMSE 0.488, Pearson 0.879, and a bias of only +0.049;
 - so calibration was not the gap to the top.
 
 A predictor built from those probes reproduces unseen public scores to within 0.0004. It was used for one thing only: the
 bias offset in pick 2. It was never used to choose a model.
 
-### 10. A model that explains itself
-An additive Kolmogorov–Arnold network on eight understandable signals shows each signal's effect as a curve
-([reports/kan](../reports/kan)):
-- **Accuracy:** the curves cost 0.20 against the full stack, so the stack's accuracy comes from learned representations,
-  not these signals.
-- **Shape:** the curves show the examiner's floor, the repair-rate penalty, and a large "amount said" effect that is
-  partly recording length.
-- **The finding:** one additive KAN on the *stack's* inputs (the members' predictions included) matches the 24-member blend
-  on familiar prompts. It does worse on unseen prompts.
-
-### 11. A notebook that replays the result exactly
+### 12. A notebook that replays the result exactly (developed)
 - **What it replays:** the final notebook ([kaggle/final](../kaggle/final)) re-runs the stacking of all eight runs behind
   `hybrid11` from their saved candidate matrices. It checks each against the run's files (max difference ≤ 3.6e-15) and
   writes both picks.
 - **Speed:** about 40 s on a CPU.
 - **The GPU stages** (transcription, encoders, fine-tunes, examiners) are ported into an appendix behind a flag.
-- **Training RMSE 0.4800**, a figure the brief requires. It's computed with every stacking stage fitted on all 732 clips and
-  the members entering as their out-of-fold predictions, so it measures the stacking's fit, not memorisation.
+- **Training RMSE 0.4800**, a figure the brief requires. It's computed with every stacking stage fitted on all 732 clips
+  and the members entering as their out-of-fold predictions, so it measures the stacking's fit, not memorisation.

@@ -10,6 +10,9 @@ which is labelled as such.
 
 ## The yardstick, step by step
 
+The speaker-twin and recording-batch problems behind steps 1 and 2 were first reported in other participants' public
+write-ups; the steps themselves, and the rest of the table, were built in this project.
+
 | step | what changed | why |
 |---|---|---|
 | 0 | stratified 5-fold, random | the original notebook; CV 0.475 |
